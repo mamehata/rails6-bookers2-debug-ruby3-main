@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :correct_user, only: [:edit]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def show
     @comment = BookComment.new
