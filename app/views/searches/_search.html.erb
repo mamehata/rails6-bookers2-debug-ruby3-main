@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <div class="search-form">
+    <%= form_with url: search_path |f| %>
+      <%= f.text_field :word %>
+      <%= 
+  </div>
+<% end %>
