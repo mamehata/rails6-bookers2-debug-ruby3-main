@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :owner_user, only:[:edit]
+
   def new
     @group = Group.new
   end
@@ -15,7 +17,8 @@ class GroupsController < ApplicationController
   end
 
   def show
-
+    @book = Book.new
+    @group = Group.find(params[:id])
   end
 
   def index
@@ -24,7 +27,17 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:id])
+  end
 
+  def update
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+      flash[:notice] = "You have update group successfully."
+      redirect_to groups_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -35,5 +48,12 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name,:introduction,:image)
+  end
+
+  def owner_user
+    @group = Group.find(params[:id])
+    unless @group.owner_id == current_user.id
+      redirect_to groups_path
+    end
   end
 end
