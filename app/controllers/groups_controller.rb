@@ -4,7 +4,14 @@ class GroupsController < ApplicationController
   end
 
   def create
-
+    @group = Group.new(group_params)
+    @group.owner_id = current_user.id
+    if @group.save
+      flash[:notice] = "You have create group successfully."
+      redirect_to groups_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -12,7 +19,8 @@ class GroupsController < ApplicationController
   end
 
   def index
-
+    @book = Book.new
+    @groups = Group.all
   end
 
   def edit
@@ -21,5 +29,11 @@ class GroupsController < ApplicationController
 
   def destroy
 
+  end
+
+  private
+
+  def group_params
+    params.require(:group).permit(:name,:introduction,:image)
   end
 end
