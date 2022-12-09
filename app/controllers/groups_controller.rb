@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
+    @group.users << current_user
     if @group.save
       flash[:notice] = "You have create group successfully."
       redirect_to groups_path
@@ -41,7 +42,9 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-
+    @group = Group.find(params[:id])
+    @group.destroy
+    redirect_to users_path
   end
 
   private
