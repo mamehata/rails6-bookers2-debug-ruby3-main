@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h2>送信が完了しました。</h2>
+
+      <p>内容は以下の通りです。</p>
+
+      <p>[タイトル]</p>
+      <p><strong><%= @mail_title %></strong></p>
+
+      <p>[本文]</p>
+      <p><strong><%= safe_join(@mail_content.split("\n"), tag(:br)) %></strong></p>
+    </div>
+  </div>
+</div>

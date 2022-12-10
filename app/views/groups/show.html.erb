@@ -43,6 +43,11 @@
       </td>
       <td>
         <% if @group.owner_id == current_user.id %>
+          <%= link_to 'Notice an Event', new_mail_group_path(@group.id), class:"btn btn-info btn-sm" %>
+        <% end %>
+      </td>
+      <td>
+        <% if @group.owner_id == current_user.id %>
           <%= link_to 'Delete', group_path(@group.id), method: :delete, class:"btn btn-danger btn-sm" %>
         <% end %>
       </td>

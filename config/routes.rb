@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   end
   resources :groups do
     resources :group_users, only: [:create, :destroy]
+    member do
+      get :new_mail, :send_mail
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
