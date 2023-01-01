@@ -1,0 +1,13 @@
+<div id="review_display<%= book.id %>"></div>
+<script>
+  elem = document.querySelector("#review_display<%= book.id %>");
+  opt = {
+    size: 30,
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn: '<%= asset_path('star-on.png') %>',
+    half: false,
+    readOnly: true,
+    score: '<%= book.star %>',
+  };
+  raty(elem,opt);
+</script>

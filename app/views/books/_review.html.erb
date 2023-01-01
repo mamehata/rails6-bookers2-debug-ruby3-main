@@ -1,0 +1,15 @@
+<div class="form-group row" id="review">
+  <%= f.label :star, '評価', class:'col-md-3 col-form-label' %>
+  <%= f.hidden_field :star, id: :review_star %>
+</div>
+<script>
+  elem = document.querySelector("#review");
+  opt = {
+    size: 30,
+    starOff: '<%= asset_path('star-off.png') %>',
+    starOn: '<%= asset_path('star-on.png') %>',
+    scoreName: 'book[star]',
+    half: false
+  };
+  raty(elem,opt);
+</script>

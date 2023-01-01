@@ -22,6 +22,9 @@
           <% end %>
         </td>
         <td>コメント数: <%= book.book_comments.count %></td>
+        <td>
+          <%= render 'books/review_display', book: book %>
+        </td>
       </tr>
     <% end %>
   </tbody>
