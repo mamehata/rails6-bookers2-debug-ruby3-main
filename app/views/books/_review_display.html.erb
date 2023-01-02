@@ -1,13 +1,16 @@
 <div id="review_display<%= book.id %>"></div>
 <script>
-  elem = document.querySelector("#review_display<%= book.id %>");
-  opt = {
-    size: 30,
-    starOff: '<%= asset_path('star-off.png') %>',
-    starOn: '<%= asset_path('star-on.png') %>',
-    half: false,
-    readOnly: true,
-    score: '<%= book.star %>',
-  };
-  raty(elem,opt);
+  document.addEventListener('turbolinks:load', function() {
+    let raty_elem_<%= book.id %> = document.querySelector("#review_display<%= book.id %>");
+    raty_elem_<%= book.id %>.innerHTML = "";
+    let raty_opt_<%= book.id %> = {
+      size: 30,
+      starOff: '<%= asset_path('star-off.png') %>',
+      starOn: '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      readOnly: true,
+      score: '<%= book.star %>'
+    };
+    raty(raty_elem_<%= book.id %>,raty_opt_<%= book.id %>);
+  });
 </script>
