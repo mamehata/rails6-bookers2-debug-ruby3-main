@@ -1,7 +1,10 @@
 <% if @range == "User" %>
   <h2>Users search for"<%= @word %>"</h2>
   <%= render "users/index", users: @users %>
-<% else %>
+<% elsif @range == "Book" %>
   <h2>Books search for"<%= @word %>"</h2>
+  <%= render "books/index", books: @books %>
+<% else %>
+  <h2>Books search for"<%= @tag.tag_name %>"</h2>
   <%= render "books/index", books: @books %>
 <% end %>
