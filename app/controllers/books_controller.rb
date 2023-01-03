@@ -9,6 +9,11 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    if params[:sort] == "0"
+      @books = Book.all.order('created_at DESC')
+    elsif params[:sort] == "1"
+      @books = Book.all.order('star DESC')
+    end
     @book = Book.new
   end
 
