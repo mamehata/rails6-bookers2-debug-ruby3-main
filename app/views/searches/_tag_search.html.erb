@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <div class="search-form">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= f.collection_select :id, Tag.all, :id, :tag_name, {prompt: '選択してください。'} %>
+      <%= f.submit "タグ検索", class:"btn btn-outline-dark btn-sm" %>
+    <% end %>
+  </div>
+<% end %>
